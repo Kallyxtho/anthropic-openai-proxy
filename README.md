@@ -1,44 +1,44 @@
 # anthropic-openai-proxy
 
-Fastify proxy agnostico che traduce **Anthropic Messages API** in **OpenAI Chat Completions API**.
+Fastify proxy that translates **Anthropic Messages API** to **OpenAI Chat Completions API**.
 
-Permette di usare client compatibili Anthropic con qualsiasi provider OpenAI-compatible: OpenAI, NVIDIA NIM, OpenRouter, ecc.
+It allows Anthropic-compatible clients to work with any OpenAI-compatible provider: OpenAI, NVIDIA NIM, OpenRouter, etc.
 
-## Funzionalità
+## Features
 
-- Traduction messaggi, system, tool use / tool result
-- Streaming SSE coerente con Anthropic
-- Retry con backoff su errori 429/5xx
-- Logging richieste e dump errori opzionale
-- Configurazione via env, nessun hard-code
+- Message, system prompt and tool use / tool result translation
+- Streaming SSE compatible with Anthropic
+- Retry with backoff on 429/5xx errors
+- Optional request logging and error dumps
+- Full configuration via environment variables, no hard-coded secrets
 
-## Avvio rapido
+## Quick start
 
 ```bash
 cp .env.example .env
-# edita .env con le tue credenziali
+# edit .env with your credentials
 npm start
 ```
 
-Server in ascolto su `http://localhost:8080`
+Server listens on `http://localhost:8080`
 
-## Variabili ambiente
+## Environment variables
 
-- `PROVIDER_BASE_URL` base URL del provider OpenAI-compatible
-- `API_KEY` chiave del provider
-- `MODEL` modello da usare
-- `DUMP_DIR` cartella per dump richieste fallite
-- `PORT` porta server
+- `PROVIDER_BASE_URL` Base URL of the OpenAI-compatible provider
+- `API_KEY` Provider API key
+- `MODEL` Model to use
+- `DUMP_DIR` Directory for failed request dumps
+- `PORT` Server port
 
-## Endpoint
+## Endpoints
 
-- `POST /v1/messages` Anthropic Messages → provider OpenAI
-- `GET /api/hello` health check
+- `POST /v1/messages` Anthropic Messages → OpenAI provider
+- `GET /api/hello` Health check
 
-## Sicurezza
+## Security
 
-Non committare `.env`. Chiavi e dump sono ignorati via `.gitignore`.
+Do not commit `.env`. Keys and dumps are ignored via `.gitignore`.
 
-## Licenza
+## License
 
 MIT

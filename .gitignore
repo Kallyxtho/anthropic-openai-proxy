@@ -8,3 +8,4 @@ ab-*.json
 agent-test.json
 proxy.log
 proxy-err.log
+.nyx/
